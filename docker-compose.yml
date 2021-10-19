@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  postgresql-heat:
+    image: "bitnami/postgresql"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=heatdb
+    volumes:
+      - "pgdata:/bitnami/postgresql"
+    networks:
+      - app-network
+
+  app-heat:
+    build: .
+    container_name: api-nlwheat
+    depends_on:
+      - postgresql-heat
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/usr/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
