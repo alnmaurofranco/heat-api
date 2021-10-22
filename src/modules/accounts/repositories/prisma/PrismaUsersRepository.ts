@@ -1,6 +1,7 @@
 import { User } from ".prisma/client";
 import { IUsersRepository } from "../IUsersRepository";
 import { prisma } from "@infra/prisma";
+import { UserMapper } from "@modules/accounts/mappers/UserMapper";
 
 class PrismaUsersRepository implements IUsersRepository {
   private repository = prisma.user;
@@ -29,10 +30,10 @@ class PrismaUsersRepository implements IUsersRepository {
     return user;
   }
 
-  async create(user: User): Promise<void> {
-    const data = user;
+  async create(user: User): Promise<User> {
+    const data = await UserMapper.toPersistence(user);
 
-    await this.repository.create({ data });
+    return await this.repository.create({ data });
   }
 }
 

@@ -17,12 +17,6 @@ class Message {
       user_id,
     });
   }
-
-  public static create({ text, user_id }: Message) {
-    const message = new Message({ text, user_id });
-
-    return message;
-  }
 }
 
 export { Message };

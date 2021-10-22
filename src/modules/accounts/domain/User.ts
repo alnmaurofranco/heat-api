@@ -21,12 +21,6 @@ class User {
       github_id,
     });
   }
-
-  public static create({ name, login, avatar_url, github_id }: User) {
-    const user = new User({ name, login, avatar_url, github_id });
-
-    return user;
-  }
 }
 
 export { User };

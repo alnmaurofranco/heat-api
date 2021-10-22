@@ -1,8 +1,8 @@
 import axios from "axios";
-import { prisma } from "@infra/prisma";
 import { sign } from "jsonwebtoken";
 import { authConfig } from "@config/auth";
-import { User } from ".prisma/client";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { User } from "@modules/accounts/domain/User";
 
 interface IAccessTokenResponse {
   access_token: string;
@@ -25,7 +25,7 @@ type AuthenticateUserResponse = {
 };
 
 class AuthenticateUser {
-  constructor() {}
+  constructor(private readonly usersRepository: IUsersRepository) {}
 
   async execute({
     code,
@@ -55,20 +55,14 @@ class AuthenticateUser {
 
     const { id, name, login, avatar_url } = githubUserResponse;
 
-    let user = await prisma.user.findFirst({
-      where: {
-        github_id: id,
-      },
-    });
+    let user = await this.usersRepository.findByGitHubId(id);
 
     if (!user) {
-      user = await prisma.user.create({
-        data: {
-          name,
-          login,
-          github_id: id,
-          avatar_url,
-        },
+      user = await this.usersRepository.create({
+        name,
+        login,
+        github_id: id,
+        avatar_url,
       });
     }
 

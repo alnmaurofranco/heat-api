@@ -2,12 +2,13 @@ import { Request, Response } from "express";
 import { AuthenticateUser } from "./AuthenticateUser";
 
 class AuthenticateUserController {
+  constructor(private readonly authenticateUser: AuthenticateUser) {}
+
   async handle(request: Request, response: Response): Promise<Response> {
     try {
       const { code } = request.body;
 
-      const authenticateUser = new AuthenticateUser();
-      const result = await authenticateUser.execute({ code });
+      const result = await this.authenticateUser.execute({ code });
 
       return response.json(result);
     } catch (err) {
