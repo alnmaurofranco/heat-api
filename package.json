@@ -4,9 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:server": "tsnd --respawn --transpile-only --ignore-watch node_modules --exit-child --clear src/server.ts",
-    "db:migrate": "ts-node-dev ./node_modules/.bin/prisma migrate dev",
-    "db:gen": "ts-node-dev ./node_modules/.bin/prisma generate"
+    "dev:server": "tsnd --respawn --transpile-only --ignore-watch node_modules --exit-child --clear -r tsconfig-paths/register src/infra/http/server.ts",
+    "db:migrate": "tsnd ./node_modules/.bin/prisma migrate dev --name"
   },
   "dependencies": {
     "@prisma/client": "^3.3.0",
@@ -26,6 +25,7 @@
     "@types/socket.io": "^3.0.2",
     "prisma": "^3.3.0",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.4"
   }
 }

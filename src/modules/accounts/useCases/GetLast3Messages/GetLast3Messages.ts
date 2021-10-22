@@ -1,4 +1,4 @@
-import { prisma } from "../../../../infra/prisma";
+import { prisma } from "@infra/prisma";
 import { User, Message } from ".prisma/client";
 
 type GetLast3MessagesResponse = (Message & {

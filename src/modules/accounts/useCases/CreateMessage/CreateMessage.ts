@@ -1,6 +1,6 @@
-import { Message } from ".prisma/client";
-import { prisma } from "../../../../infra/prisma";
-import { io } from "../../../../infra/http/app";
+import { io } from "@infra/http/app";
+import { Message } from "@modules/accounts/domain/Message";
+import { IMessagesRepository } from "@modules/accounts/repositories/IMessagesRepository";
 
 type CreateMessageRequest = {
   text: string;
@@ -10,21 +10,13 @@ type CreateMessageRequest = {
 type CreateMessageResponse = Message;
 
 class CreateMessage {
-  constructor() {}
+  constructor(private readonly messagesRepository: IMessagesRepository) {}
 
   async execute({
     text,
     user_id,
   }: CreateMessageRequest): Promise<CreateMessageResponse> {
-    const message = await prisma.message.create({
-      data: {
-        text,
-        user_id,
-      },
-      include: {
-        user: true,
-      },
-    });
+    const message = await this.messagesRepository.create({ text, user_id });
 
     const infoWS = {
       text: message.text,

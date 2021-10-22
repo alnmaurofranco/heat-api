@@ -4,8 +4,14 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "skipLibCheck": true,
-    "typeRoots": ["./src/@types", "node_modules/@types"]
+    "typeRoots": ["./src/@types", "node_modules/@types"],
+    "baseUrl": "./src",
+    "paths": {
+      "@infra/*": ["infra/*"],
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"]
+    }
   }
 }

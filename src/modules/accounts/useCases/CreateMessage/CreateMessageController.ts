@@ -3,17 +3,17 @@ import { CreateMessage } from "./CreateMessage";
 
 type CreateMessageControllerRequest = {
   text: string;
-  user_id: string;
 };
 
 class CreateMessageController {
+  constructor(private readonly createMessage: CreateMessage) {}
+
   async handle(request: Request, response: Response): Promise<Response> {
     try {
       const { user_id } = request;
       const { text } = request.body as CreateMessageControllerRequest;
 
-      const createMessage = new CreateMessage();
-      const result = await createMessage.execute({
+      const result = await this.createMessage.execute({
         text,
         user_id,
       });

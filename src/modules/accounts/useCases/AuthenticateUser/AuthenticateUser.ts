@@ -1,7 +1,7 @@
 import axios from "axios";
-import { prisma } from "../../../../infra/prisma";
+import { prisma } from "@infra/prisma";
 import { sign } from "jsonwebtoken";
-import { authConfig } from "../../../../config/auth";
+import { authConfig } from "@config/auth";
 import { User } from ".prisma/client";
 
 interface IAccessTokenResponse {

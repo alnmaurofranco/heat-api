@@ -1,4 +1,4 @@
-import { prisma } from "../../../../infra/prisma";
+import { prisma } from "@infra/prisma";
 import { User } from ".prisma/client";
 
 type ProfileUserRequest = {
