@@ -1,11 +1,10 @@
 import { Router } from "express";
-import { EnsureAuthenticated } from "../middlewares/EnsureAuthenticated";
-import { ProfileUserController } from "../../../modules/accounts/useCases/ProfileUser/ProfileUserController";
-import { CreateMessageFactory } from "../factory/CreateMessageFactory";
-import { AuthenticateUserFactory } from "../factory/AuthenticateUserFactory";
-import { GetLast3MessagesFactory } from "../factory/GetLast3MessagesFactory";
 
-const profileUserController = new ProfileUserController();
+import { AuthenticateUserFactory } from "../factory/AuthenticateUserFactory";
+import { CreateMessageFactory } from "../factory/CreateMessageFactory";
+import { GetLast3MessagesFactory } from "../factory/GetLast3MessagesFactory";
+import { ProfileUserFactory } from "../factory/ProfileUserFactory";
+import { EnsureAuthenticated } from "../middlewares/EnsureAuthenticated";
 
 const router = Router();
 
@@ -27,6 +26,8 @@ router.get("/messages/last3", (req, res) =>
   GetLast3MessagesFactory().handle(req, res)
 );
 
-router.get("/profile", EnsureAuthenticated, profileUserController.handle);
+router.get("/profile", EnsureAuthenticated, (req, res) =>
+  ProfileUserFactory().handle(req, res)
+);
 
 export { router };
