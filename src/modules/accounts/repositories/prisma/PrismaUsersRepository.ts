@@ -2,7 +2,7 @@ import { User } from ".prisma/client";
 import { IUsersRepository } from "../IUsersRepository";
 import { prisma } from "@infra/prisma";
 
-class UsersRepository implements IUsersRepository {
+class PrismaUsersRepository implements IUsersRepository {
   private repository = prisma.user;
 
   async findById(user_id: string): Promise<User | null> {
@@ -36,4 +36,4 @@ class UsersRepository implements IUsersRepository {
   }
 }
 
-export { UsersRepository };
+export { PrismaUsersRepository };

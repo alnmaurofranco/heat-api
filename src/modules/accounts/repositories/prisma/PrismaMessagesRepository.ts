@@ -3,7 +3,7 @@ import { IMessagesRepository } from "../IMessagesRepository";
 import { Message } from "@modules/accounts/domain/Message";
 import { MessageMapper } from "@modules/accounts/mappers/MessageMapper";
 
-class MessagesRepository implements IMessagesRepository {
+class PrismaMessagesRepository implements IMessagesRepository {
   private repository = prisma.message;
 
   async findAll(): Promise<Message[]> {
@@ -34,4 +34,4 @@ class MessagesRepository implements IMessagesRepository {
   }
 }
 
-export { MessagesRepository };
+export { PrismaMessagesRepository };
