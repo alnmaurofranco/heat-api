@@ -6,11 +6,11 @@ import { EnsureAuthenticated } from "../middlewares/EnsureAuthenticated";
 
 const messagesRouter = Router();
 
-messagesRouter.post("/messages", EnsureAuthenticated, (request, response) =>
+messagesRouter.post("/", EnsureAuthenticated, (request, response) =>
   CreateMessageFactory().handle(request, response)
 );
 
-messagesRouter.get("/messages/last3", (request, response) =>
+messagesRouter.get("/last3", (request, response) =>
   GetLast3MessagesFactory().handle(request, response)
 );
 
