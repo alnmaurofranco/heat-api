@@ -1,11 +1,29 @@
 import "dotenv/config";
 import express from "express";
-import { router } from "./routes";
+import http from "http";
+import cors from "cors";
+
+import { Server } from "socket.io";
+import { router } from "./routes/index";
 
 const app: express.Application = express();
 
+// Configuration Socket.io
+const serverHttp = http.createServer(app);
+
+const io = new Server(serverHttp, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User connected on socket ${socket.id}`);
+});
+
 // Configuration
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.get("/", (request, response) =>
@@ -20,4 +38,4 @@ app.get("/github", (request, response) =>
 
 app.use("/api", router);
 
-export { app };
+export { app, io, serverHttp };

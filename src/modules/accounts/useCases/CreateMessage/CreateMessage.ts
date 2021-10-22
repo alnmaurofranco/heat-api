@@ -1,5 +1,6 @@
 import { Message } from ".prisma/client";
-import { prisma } from "./prisma";
+import { prisma } from "../../../../infra/prisma";
+import { io } from "../../../../infra/http/app";
 
 type CreateMessageRequest = {
   text: string;
@@ -24,6 +25,18 @@ class CreateMessage {
         user: true,
       },
     });
+
+    const infoWS = {
+      text: message.text,
+      user_id: message.user_id,
+      createdAt: message.createdAt,
+      user: {
+        name: message.user.name,
+        avatar_url: message.user.avatar_url,
+      },
+    };
+
+    io.emit("new_message", infoWS);
 
     return message;
   }
