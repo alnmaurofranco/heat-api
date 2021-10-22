@@ -1,23 +1,13 @@
-import { prisma } from "@infra/prisma";
-import { User, Message } from ".prisma/client";
+import { Message } from "@modules/accounts/domain/Message";
+import { IMessagesRepository } from "@modules/accounts/repositories/IMessagesRepository";
 
-type GetLast3MessagesResponse = (Message & {
-  user: User;
-})[];
+type GetLast3MessagesResponse = Message[];
 
 class GetLast3Messages {
-  constructor() {}
+  constructor(private readonly messagesRepository: IMessagesRepository) {}
 
   async execute(): Promise<GetLast3MessagesResponse> {
-    const messages = await prisma.message.findMany({
-      take: 3,
-      orderBy: {
-        createdAt: "desc",
-      },
-      include: {
-        user: true,
-      },
-    });
+    const messages = await this.messagesRepository.findLastThreeMessages();
 
     return messages;
   }
