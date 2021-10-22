@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from "@modules/accounts/domain/User";
 
 class Message {
   id?: string;

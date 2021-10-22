@@ -1,6 +1,6 @@
-import { PrismaMessagesRepository } from "@modules/accounts/repositories/prisma/PrismaMessagesRepository";
-import { GetLast3Messages } from "@modules/accounts/useCases/GetLast3Messages/GetLast3Messages";
-import { GetLast3MessagesController } from "@modules/accounts/useCases/GetLast3Messages/GetLast3MessagesController";
+import { PrismaMessagesRepository } from "@modules/messages/repositories/prisma/PrismaMessagesRepository";
+import { GetLast3Messages } from "@modules/messages/useCases/GetLast3Messages/GetLast3Messages";
+import { GetLast3MessagesController } from "@modules/messages/useCases/GetLast3Messages/GetLast3MessagesController";
 
 const GetLast3MessagesFactory = () => {
   const messagesRepository = new PrismaMessagesRepository();

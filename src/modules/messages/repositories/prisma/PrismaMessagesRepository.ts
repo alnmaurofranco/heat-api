@@ -1,7 +1,7 @@
 import { prisma } from "@infra/prisma";
 import { IMessagesRepository } from "../IMessagesRepository";
-import { Message } from "@modules/accounts/domain/Message";
-import { MessageMapper } from "@modules/accounts/mappers/MessageMapper";
+import { Message } from "@modules/messages/domain/Message";
+import { MessageMapper } from "@modules/messages/mappers/MessageMapper";
 
 class PrismaMessagesRepository implements IMessagesRepository {
   private repository = prisma.message;

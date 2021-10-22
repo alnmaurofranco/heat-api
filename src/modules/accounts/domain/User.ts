@@ -1,4 +1,4 @@
-import { Message } from "@modules/accounts/domain/Message";
+import { Message } from "@modules/messages/domain/Message";
 
 class User {
   id?: string;

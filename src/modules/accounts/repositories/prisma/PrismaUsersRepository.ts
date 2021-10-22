@@ -1,4 +1,4 @@
-import { User } from ".prisma/client";
+import { User } from "@modules/accounts/domain/User";
 import { IUsersRepository } from "../IUsersRepository";
 import { prisma } from "@infra/prisma";
 import { UserMapper } from "@modules/accounts/mappers/UserMapper";

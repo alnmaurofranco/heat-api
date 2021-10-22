@@ -1,6 +1,6 @@
-import { PrismaMessagesRepository } from "@modules/accounts/repositories/prisma/PrismaMessagesRepository";
-import { CreateMessage } from "@modules/accounts/useCases/CreateMessage/CreateMessage";
-import { CreateMessageController } from "@modules/accounts/useCases/CreateMessage/CreateMessageController";
+import { PrismaMessagesRepository } from "@modules/messages/repositories/prisma/PrismaMessagesRepository";
+import { CreateMessage } from "@modules/messages/useCases/CreateMessage/CreateMessage";
+import { CreateMessageController } from "@modules/messages/useCases/CreateMessage/CreateMessageController";
 
 const CreateMessageFactory = () => {
   const messagesRepository = new PrismaMessagesRepository();

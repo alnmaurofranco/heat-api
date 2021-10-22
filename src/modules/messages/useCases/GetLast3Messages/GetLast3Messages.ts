@@ -1,5 +1,5 @@
-import { Message } from "@modules/accounts/domain/Message";
-import { IMessagesRepository } from "@modules/accounts/repositories/IMessagesRepository";
+import { Message } from "@modules/messages/domain/Message";
+import { IMessagesRepository } from "@modules/messages/repositories/IMessagesRepository";
 
 type GetLast3MessagesResponse = Message[];
 

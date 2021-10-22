@@ -1,4 +1,4 @@
-import { Message } from "@modules/accounts/domain/Message";
+import { Message } from "../domain/Message";
 
 class MessageMapper {
   public static async toPersistence(message: Message) {
