@@ -36,8 +36,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 [x] - Implementação dos Principios do S.O.L.I.D
 
-[] - Implementação dos testes (teste unitario e de integração)
-
 ---
 
 Feito com 💚 by AlanM Franco
