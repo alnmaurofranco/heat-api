@@ -30,12 +30,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 * Listagem de mensagens ✅
 * Enviar mensagem ✅
 
-## 💫 Desafios - Próximo nivel
+## 💫 Desafios - Próximo nível
 
-[x] - Implementação do Docker
+- [x] Implementação do Docker
+- [x] Implementação dos Principios do S.O.L.I.D
+- [x] Deploy no Heroku
 
-[x] - Implementação dos Principios do S.O.L.I.D
+## ⚡ Front-end
+<a href="https://">https://</a>
 
 ---
-
 Feito com 💚 by AlanM Franco
