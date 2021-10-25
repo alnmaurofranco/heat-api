@@ -1,11 +1,13 @@
 {
-  "name": "impulse",
+  "name": "heat-api",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev:server": "tsnd --respawn --transpile-only --ignore-watch node_modules --exit-child --clear -r tsconfig-paths/register src/infra/http/server.ts",
-    "db:migrate": "tsnd ./node_modules/.bin/prisma migrate dev --name"
+    "db:migrate": "tsnd ./node_modules/.bin/prisma migrate dev --name",
+    "start": "node dist/infra/http/server.js",
+    "build": "rm -rf dist && babel src --extensions \".ts\" --out-dir dist --copy-files"
   },
   "dependencies": {
     "@prisma/client": "^3.3.0",
@@ -17,12 +19,19 @@
     "socket.io": "^4.3.1"
   },
   "devDependencies": {
+    "@babel/cli": "7.14.8",
+    "@babel/core": "7.15.0",
+    "@babel/node": "7.14.9",
+    "@babel/preset-env": "7.15.0",
+    "@babel/preset-typescript": "7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@types/axios": "^0.14.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/node": "^16.11.1",
     "@types/socket.io": "^3.0.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "prisma": "^3.3.0",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.11.0",

@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "typeRoots": ["./src/@types", "node_modules/@types"],
     "baseUrl": "./src",
     "paths": {
@@ -13,5 +14,6 @@
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"]
     }
-  }
+  },
+  "include": ["src"]
 }
